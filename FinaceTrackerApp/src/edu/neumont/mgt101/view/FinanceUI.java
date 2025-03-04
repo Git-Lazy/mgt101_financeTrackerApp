@@ -7,11 +7,14 @@ public class FinanceUI {
                 1. Create Account
                 2. Login
                 3. Exit
-                """, 1, 5);
+                """, 1, 3);
     }
     public static int displayLoggedInMenu() {
         return Console.getIntInput("""
-                1. 
-                """, 1, 5);
+                1. Deposit
+                2. Withdraw
+                3. View History
+                4. Logout
+                """, 1, 4);
     }
 }
