@@ -9,7 +9,7 @@ public class FinanceController {
         boolean running = true;
 
         while (running) {
-            int selection = FinanceUI.displayMainMenu(); // Get user menu selection
+            int selection = FinanceUI.displayMainMenu();
 
             switch (selection) {
                 case 1 -> { // Create Account
@@ -22,17 +22,15 @@ public class FinanceController {
                     } else {
                         Console.writeLn("Username already exists. Try again.");
                     }
-                    // Re-prompt the main menu after account creation
-                    break; // Ensures the loop will break and re-check the main menu
                 }
                 case 2 -> { // Login
                     String username = Console.getStringInput("Enter your username:", 3, 20, Console.TextColor.YELLOW);
                     String password = Console.getStringInput("Enter your password:", 5, 30, Console.TextColor.YELLOW);
                     User loginUser = new User(username, password);
 
-                    if (loginUser.authenticateUser()) { // Check credentials
+                    if (loginUser.authenticateUser()) {
                         Console.writeLn("Login successful! Welcome, " + username + "!");
-                        handleLoggedInUser(loginUser); // Proceed to logged-in menu
+                        handleLoggedInUser(loginUser);
                     } else {
                         Console.writeLn("Invalid username or password. Try again.");
                     }
