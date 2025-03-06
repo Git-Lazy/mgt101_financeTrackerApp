@@ -1,5 +1,7 @@
 package edu.neumont.mgt101.model;
 
+import edu.neumont.mgt101.model.money.Atm;
+
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -7,11 +9,13 @@ import java.security.NoSuchAlgorithmException;
 public class User {
     private String username;
     private String password;
+    private Atm atm;
     private static final String DATABASE_FILE = "database.txt";
 
     public User(String username, String password) {
         this.username = username;
         this.password = hashPassword(password);
+        atm = new Atm();
     }
 
     public boolean registerUser() {
@@ -69,5 +73,17 @@ public class User {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Atm getATM() {
+        return atm;
+    }
+
+    public void withdraw(int amount) {
+        atm.withdraw(amount);
+    }
+
+    public void deposit(int amount) {
+        atm.deposit(amount);
     }
 }
